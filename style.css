@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(180, 199, 192);
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+#left{
+    width: 30%;
+
+}
+
+
+#left #user{
+    border: 1px solid ;
+text-align: center;
+font-size: 25px;
+background-color: azure;
+border-radius: 15px;
+cursor: pointer;
+margin-bottom: 15px;
+}
+#left #user h3{
+   
+    margin: 5px;
+}
+#left #user  p{
+    margin: 5px;
+}
+#right{
+   
+    width: 65%;
+}
+#right #post{
+
+    background-color: aliceblue;
+    padding: 10px 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+#user.selected{
+    border: 6px solid orange;
+}
+/* #right #post  */

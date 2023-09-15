@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link  rel="stylesheet" href="./style.css"> 
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div id="left">
+
+        </div>
+        <div id="right">
+
+        </div>
+    </div>
+    <script>
+      function getRequest(userid){
+        let request=new XMLHttpRequest();
+        request.open("GET","https://jsonplaceholder.typicode.com/posts?userId="+userid);
+        request.responseType="json";
+        request.send();
+        
+        request.onload= () => {
+          if(request.status>=200 && request.status<300){
+            var posts=request.response;
+            document.getElementById( "right" ).innerHTML ="" 
+            for(post of posts){
+            document.getElementById( "right" ).innerHTML += 
+            `<div id=post >
+            <h3>${post.title} </h3>
+            <h4>${post.body}</h4>
+            
+            
+            </div>
+            `;
+           }
+          }
+          else{
+            alert('error')
+          }
+
+        }
+      }
+
+
+      function getusers(){
+        let request=new XMLHttpRequest();
+        request.open("GET","https://jsonplaceholder.typicode.com/users");
+        request.responseType="json";
+        request.send();
+        
+        request.onload= () => {
+          if(request.status>=200 && request.status<300){
+            var users=request.response;
+            document.getElementById( "left" ).innerHTML=""
+            for(user of users){
+            document.getElementById( "left" ).innerHTML += 
+            `<div id=user onclick=userClicked(${user.id},this)>
+            <h3>${user.name} </h3>
+          <p>${user.username}</p>
+            
+            
+            </div>
+            `;
+           }
+       
+
+          }
+          else{
+            alert('error')
+          }
+
+        }
+
+      }
+     
+    
+      getusers()
+       
+        function userClicked(id,eh){
+            getRequest(id)
+           eh.ClassName="selected"
+ 
+         
+        }
+       
+
+
+
+
+  
+      
+      
+      
+      
+    </script>
+</body>
+</html>
